@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Hafshah Aulia Love Effect</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    background: radial-gradient(circle, #000000 40%, #050505 100%);
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    perspective: 1000px;
+    overflow: hidden;
+}
+
+/* 🔥 INI YANG DIUBAH (GLOW TEKS) */
+.text {
+    position: absolute;
+    color: #fff;
+    font-size: 20px;
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 5px #ffffff,
+        0 0 10px #ffffff,
+        0 0 20px #ff9bd3,
+        0 0 30px #ff4da6,
+        0 0 40px #ff4da6;
+
+    opacity: 0.9;
+    animation: float 10s linear infinite;
+}
+
+/* 🔥 INI JUGA DIUBAH (GLOW HATI) */
+.heart {
+    color: #ff2b2b;
+    text-shadow:
+        0 0 5px #ff2b2b,
+        0 0 10px #ff2b2b,
+        0 0 20px red;
+}
+
+@keyframes float {
+    0% {
+        transform: translateZ(-500px) translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateZ(500px) translateY(-100vh) scale(1.2);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="container"></div>
+
+<script>
+const container = document.getElementById("container");
+
+function createText() {
+    const el = document.createElement("div");
+    el.className = "text";
+
+    el.innerHTML = "Hafshah Aulia <span class='heart'>❤</span>";
+
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.fontSize = (15 + Math.random() * 25) + "px";
+    el.style.animationDuration = (6 + Math.random() * 6) + "s";
+
+    container.appendChild(el);
+
+    setTimeout(() => {
+        el.remove();
+    }, 12000);
+}
+
+setInterval(createText, 200);
+</script>
+
+</body>
+</html>
